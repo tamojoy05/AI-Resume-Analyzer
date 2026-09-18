@@ -23,173 +23,257 @@ st.set_page_config(
 # CUSTOM HEADER / HERO SECTION
 # ==============================
 
-st.markdown(
-    """
-    <style>
+HERO_HTML = """
+<style>
+.stApp {
+background: #0b0e13;
+}
+.block-container {
+padding-top: 2rem;
+padding-bottom: 3rem;
+max-width: 1400px;
+}
+.hero {
+background: #10253f;
+border-radius: 10px;
+padding: 40px 48px 36px 48px;
+margin-bottom: 28px;
+border: 1px solid #0c1c30;
+border-top: 4px solid #b08d3f;
+box-shadow: 0 4px 18px rgba(16, 37, 63, 0.15);
+}
+.hero-eyebrow {
+font-size: 13px;
+font-weight: 600;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: #b08d3f;
+margin-bottom: 10px;
+}
+.hero-title {
+font-size: 38px;
+font-weight: 700;
+letter-spacing: -0.5px;
+margin: 0;
+line-height: 1.15;
+color: #ffffff;
+font-family: "Georgia", "Times New Roman", serif;
+}
+.hero-subtitle {
+font-size: 16px;
+font-weight: 400;
+color: #cbd5e1;
+margin-top: 12px;
+margin-bottom: 0;
+max-width: 780px;
+line-height: 1.6;
+}
+.feature-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 16px;
+margin-top: 30px;
+}
+.feature-card {
+padding: 18px 18px;
+border-radius: 6px;
+background: rgba(255, 255, 255, 0.04);
+border: 1px solid rgba(255, 255, 255, 0.12);
+border-left: 3px solid #b08d3f;
+}
+.feature-title {
+font-size: 14px;
+font-weight: 600;
+color: #ffffff;
+letter-spacing: 0.2px;
+}
+.feature-text {
+font-size: 12.5px;
+color: #a9b7c6;
+margin-top: 4px;
+line-height: 1.5;
+}
+@media (max-width: 900px) {
+.feature-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+.hero-title {
+font-size: 30px;
+}
+}
+@media (max-width: 600px) {
+.feature-grid {
+grid-template-columns: 1fr;
+}
+.hero {
+padding: 28px 24px;
+}
+.hero-title {
+font-size: 26px;
+}
+}
 
-    .stApp {
-        background: #f4f6f9;
-    }
+h2, h3 {
+color: #e8ecf1 !important;
+font-weight: 700 !important;
+}
 
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 3rem;
-        max-width: 1400px;
-    }
+[data-testid="stFileUploaderDropzone"] {
+background: #10253f !important;
+border: 1px dashed #b08d3f !important;
+border-radius: 8px !important;
+}
 
-    .hero {
-        background: #10253f;
-        border-radius: 10px;
-        padding: 40px 48px 36px 48px;
-        margin-bottom: 28px;
-        border: 1px solid #0c1c30;
-        border-top: 4px solid #b08d3f;
-        box-shadow: 0 4px 18px rgba(16, 37, 63, 0.15);
-    }
+[data-testid="stFileUploaderDropzone"] button {
+background: #b08d3f !important;
+color: #10253f !important;
+border: none !important;
+font-weight: 600 !important;
+}
 
-    .hero-eyebrow {
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #b08d3f;
-        margin-bottom: 10px;
-    }
+[data-testid="stTextArea"] textarea {
+background: #10253f !important;
+border: 1px solid #23324a !important;
+border-radius: 8px !important;
+color: #e8ecf1 !important;
+}
 
-    .hero-title {
-        font-size: 38px;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-        margin: 0;
-        line-height: 1.15;
-        color: #ffffff;
-        font-family: "Georgia", "Times New Roman", serif;
-    }
+[data-testid="stTextArea"] textarea:focus {
+border: 1px solid #b08d3f !important;
+box-shadow: none !important;
+}
 
-    .hero-subtitle {
-        font-size: 16px;
-        font-weight: 400;
-        color: #cbd5e1;
-        margin-top: 12px;
-        margin-bottom: 0;
-        max-width: 780px;
-        line-height: 1.6;
-    }
+button[kind="primary"] {
+background: #b08d3f !important;
+color: #10253f !important;
+border: none !important;
+border-radius: 8px !important;
+font-weight: 700 !important;
+}
 
-    .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        margin-top: 30px;
-    }
+button[kind="primary"]:hover {
+background: #c7a34f !important;
+color: #10253f !important;
+}
 
-    .feature-card {
-        padding: 18px 18px;
-        border-radius: 6px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-left: 3px solid #b08d3f;
-    }
+hr {
+border-color: #23324a !important;
+}
 
-    .feature-title {
-        font-size: 14px;
-        font-weight: 600;
-        color: #ffffff;
-        letter-spacing: 0.2px;
-    }
+.stTabs [data-baseweb="tab-list"] {
+border-bottom: 1px solid #23324a !important;
+gap: 8px;
+}
 
-    .feature-text {
-        font-size: 12.5px;
-        color: #a9b7c6;
-        margin-top: 4px;
-        line-height: 1.5;
-    }
+.stTabs [data-baseweb="tab"] {
+color: #a9b7c6 !important;
+font-weight: 600 !important;
+}
 
-    @media (max-width: 900px) {
-        .feature-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .hero-title {
-            font-size: 30px;
-        }
-    }
+.stTabs [aria-selected="true"] {
+color: #b08d3f !important;
+border-bottom-color: #b08d3f !important;
+}
 
-    @media (max-width: 600px) {
-        .feature-grid {
-            grid-template-columns: 1fr;
-        }
-        .hero {
-            padding: 28px 24px;
-        }
-        .hero-title {
-            font-size: 26px;
-        }
-    }
+[data-testid="stMetric"] {
+background: #10253f !important;
+border: 1px solid #23324a !important;
+border-left: 3px solid #b08d3f !important;
+border-radius: 8px !important;
+padding: 12px 16px !important;
+}
 
-    </style>
+[data-testid="stMetricLabel"] {
+color: #a9b7c6 !important;
+}
 
-    <div class="hero">
+[data-testid="stMetricValue"] {
+color: #ffffff !important;
+}
 
-        <div class="hero-eyebrow">Resume Intelligence Platform</div>
+.stProgress > div > div > div {
+background-color: #b08d3f !important;
+}
 
-        <div class="hero-title">AI Resume Analyzer</div>
+[data-testid="stExpander"] {
+background: #10253f !important;
+border: 1px solid #23324a !important;
+border-radius: 8px !important;
+}
 
-        <div class="hero-subtitle">
-            A structured evaluation of resume fit against a target job
-            description — covering skill coverage, ATS keyword alignment,
-            semantic relevance, and overall document quality.
-        </div>
+[data-testid="stVerticalBlockBorderWrapper"] {
+background: #0e1c30 !important;
+border: 1px solid #23324a !important;
+border-radius: 10px !important;
+padding: 6px 4px !important;
+}
 
-        <div class="feature-grid">
+[data-testid="stFileUploaderDropzone"] button:hover {
+background: #c7a34f !important;
+}
 
-            <div class="feature-card">
-                <div class="feature-title">Resume Parsing</div>
-                <div class="feature-text">Extracts candidate details, education, experience, and projects.</div>
-            </div>
+[data-testid="stFileUploaderFile"] {
+background: #0e1c30 !important;
+border-radius: 6px !important;
+}
 
-            <div class="feature-card">
-                <div class="feature-title">Job-Fit Matching</div>
-                <div class="feature-text">Scores semantic alignment between resume and job description.</div>
-            </div>
+.stTabs [data-baseweb="tab-panel"] {
+padding-top: 18px;
+}
 
-            <div class="feature-card">
-                <div class="feature-title">ATS Keyword Audit</div>
-                <div class="feature-text">Flags matching and missing keywords used by applicant tracking systems.</div>
-            </div>
+</style>
+<div class="hero">
+<div class="hero-eyebrow">Resume Intelligence Platform</div>
+<div class="hero-title">AI Resume Analyzer</div>
+<div class="hero-subtitle">
+A structured evaluation of resume fit against a target job description — covering skill coverage, ATS keyword alignment, semantic relevance, and overall document quality.
+</div>
+<div class="feature-grid">
+<div class="feature-card">
+<div class="feature-title">Resume Parsing</div>
+<div class="feature-text">Extracts candidate details, education, experience, and projects.</div>
+</div>
+<div class="feature-card">
+<div class="feature-title">Job-Fit Matching</div>
+<div class="feature-text">Scores semantic alignment between resume and job description.</div>
+</div>
+<div class="feature-card">
+<div class="feature-title">ATS Keyword Audit</div>
+<div class="feature-text">Flags matching and missing keywords used by applicant tracking systems.</div>
+</div>
+<div class="feature-card">
+<div class="feature-title">Improvement Guidance</div>
+<div class="feature-text">Provides specific recommendations to strengthen the resume.</div>
+</div>
+</div>
+</div>
+"""
 
-            <div class="feature-card">
-                <div class="feature-title">Improvement Guidance</div>
-                <div class="feature-text">Provides specific recommendations to strengthen the resume.</div>
-            </div>
-
-        </div>
-
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown(HERO_HTML, unsafe_allow_html=True)
 # =============================
 
 col1, col2 = st.columns(2)
 
 with col1:
+    with st.container(border=True):
 
-    st.subheader("📄 Resume")
+        st.subheader("📄 Resume")
 
-    uploaded_file = st.file_uploader(
-        "Upload your resume",
-        type=["pdf", "docx"]
-    )
+        uploaded_file = st.file_uploader(
+            "Upload your resume",
+            type=["pdf", "docx"]
+        )
 
 with col2:
+    with st.container(border=True):
 
-    st.subheader("📋 Job Description")
+        st.subheader("📋 Job Description")
 
-    job_description = st.text_area(
-        "Paste the Job Description",
-        height=180,
-        placeholder="Paste the job description here..."
-    )
+        job_description = st.text_area(
+            "Paste the Job Description",
+            height=180,
+            placeholder="Paste the job description here..."
+        )
 
 
 # =============================
