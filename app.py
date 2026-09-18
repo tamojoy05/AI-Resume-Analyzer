@@ -233,153 +233,147 @@ if analyze_button:
         # =============================
 
         with tab1:
-
-            st.subheader("📌 Analysis Summary")
-
-            st.write(
-                f"Your resume has a **{match_score}% semantic match** "
-                f"with the provided job description and a "
-                f"**{skill_match_score}% skill match**."
-            )
-
-            st.write(
-                f"**{len(skills)} skills** were detected in your resume, "
-                f"with **{len(matching_skills)} matching skills** and "
-                f"**{len(missing_skills)} missing job-relevant skills**."
-            )
-
-            # =============================
-            # Scores
-            # =============================
-        st.subheader("📊 Resume Analysis Score")
-
-        col1, col2, col3, col4 = st.columns(4)
-
-        with col1:
-            st.metric(
-                "🎯 Overall Match",
-                f"{overall_match_score:.2f}%"
-            )
-
-        with col2:
-            st.metric(
-                "🤖 AI Semantic Match",
-                f"{match_score:.2f}%"
-            )
-
-        with col3:
-            st.metric(
-                "🛠️ Skill Match",
-                f"{skill_match_score:.2f}%"
-            )
-
-        with col4:
-            st.metric(
-                "📚 Skills Detected",
-                len(skills)
-            )
-
-
-        st.progress(
-            min(skill_match_score / 100, 1.0)
-        )
         
+            st.subheader("📋 Analysis Summary")
         
-        
-        
-
-
-        if match_score >= 75:
-
-            st.success(
-                "🎯 Strong semantic match between the resume "
-                "and job description."
-            )
-
-        elif match_score >= 50:
-
             st.info(
-                "📌 Moderate semantic match. Consider tailoring "
-                "the resume more closely to the job description."
-            )
-
-        else:
-
-            st.warning(
-                "⚠️ Low semantic match. Consider adding relevant "
-                "experience, projects, and skills if they accurately "
-                "reflect your background."
-            )
-            
-        
-        st.subheader("🎯 Overall Match")
-
-        st.progress(
-            min(overall_match_score / 100, 1.0)
-        )
-
-        if overall_match_score >= 75:
-
-            st.success(
-                "🎯 Strong overall match with the job description."
-            )
-
-        elif overall_match_score >= 50:
-
-            st.info(
-                "📌 Moderate overall match. Consider tailoring "
-                "your resume to the job description."
-            )
-
-        else:
-
-            st.warning(
-                "⚠️ Several areas could be improved to better "
-                "align your resume with this job."
+                "This analysis compares your resume with the provided job "
+                "description using skills, semantic similarity, ATS keywords, "
+                "and resume quality checks."
             )
         
-
-
-        # =============================
-        # Resume Quality
-        # =============================
-
-        st.subheader("✅ Resume Quality Checks")
-
-        for check, status in quality_checks.items():
-
-            if status:
-                st.markdown(
-                    f"✅ {check}"
+            st.divider()
+        
+            # Resume Analysis Score
+            st.subheader("📊 Resume Analysis Score")
+        
+            col1, col2, col3, col4 = st.columns(4)
+        
+            with col1:
+                st.metric(
+                    "🎯 Overall Match",
+                    f"{overall_match_score:.2f}%"
+                )
+        
+            with col2:
+                st.metric(
+                    "🤖 AI Semantic Match",
+                    f"{match_score:.2f}%"
+                )
+        
+            with col3:
+                st.metric(
+                    "🛠️ Skill Match",
+                    f"{skill_match_score:.2f}%"
+                )
+        
+            with col4:
+                st.metric(
+                    "📚 Skills Detected",
+                    len(skills)
+                )
+        
+            # Skill Match
+            st.subheader("🛠️ Skill Match")
+        
+            st.progress(
+                min(skill_match_score / 100, 1.0)
+            )
+        
+            if skill_match_score >= 75:
+                st.success(
+                    "Strong skill alignment with the job description."
+                )
+            elif skill_match_score >= 50:
+                st.info(
+                    "Moderate skill alignment. Consider adding or "
+                    "highlighting more relevant skills."
                 )
             else:
-                st.markdown(
-                    f"❌ {check}"
+                st.warning(
+                    "Several job-relevant skills are missing from the resume."
+                )
+        
+            # AI Semantic Match
+            st.subheader("🤖 AI Semantic Match")
+        
+            st.progress(
+                min(match_score / 100, 1.0)
+            )
+        
+            if match_score >= 75:
+                st.success(
+                    "Your resume has strong semantic similarity with the job description."
+                )
+            elif match_score >= 50:
+                st.info(
+                    "Your resume has moderate semantic similarity with the job description."
+                )
+            else:
+                st.warning(
+                    "Your resume has relatively low semantic similarity with the job description."
+                )
+        
+            # Overall Match
+            st.subheader("🎯 Overall Match")
+        
+            st.progress(
+                min(overall_match_score / 100, 1.0)
+            )
+        
+            if overall_match_score >= 75:
+                st.success(
+                    "🎯 Strong overall match with the job description."
+                )
+            elif overall_match_score >= 50:
+                st.info(
+                    "📌 Moderate overall match. Consider tailoring your resume "
+                    "to the job description."
+                )
+            else:
+                st.warning(
+                    "⚠️ Several areas could be improved to better align your "
+                    "resume with this job."
+                )
+        
+            # Resume Quality
+            st.divider()
+        
+            st.subheader("📄 Resume Quality")
+        
+            quality_col1, quality_col2 = st.columns([1, 2])
+        
+            with quality_col1:
+        
+                st.metric(
+                    "📊 Quality Score",
+                    f"{quality_score:.2f}%"
+                )
+        
+            with quality_col2:
+        
+                for check, passed in quality_checks.items():
+        
+                    if passed:
+                        st.success(
+                            f"✅ {check}"
+                        )
+                    else:
+                        st.warning(
+                            f"⚠️ {check}"
+                        )
+        
+            # Recommendations
+            st.divider()
+        
+            st.subheader("💡 Recommendations")
+        
+            for recommendation in recommendations:
+        
+                st.info(
+                    f"💡 {recommendation}"
                 )
 
-        st.metric(
-            "📈 Resume Quality Score",
-            f"{quality_score:.2f}%"
-        )
-
-        st.progress(
-            quality_score / 100
-        )
-
-
-        # =============================
-        # Recommendations
-        # =============================
-
-        st.subheader(
-            "💡 Resume Improvement Suggestions"
-        )
-
-        for recommendation in recommendations:
-
-            st.markdown(
-                f"💡 {recommendation}"
-            )
 
 
         # =============================
