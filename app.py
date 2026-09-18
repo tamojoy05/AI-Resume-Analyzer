@@ -27,255 +27,147 @@ st.markdown(
     """
     <style>
 
-    /* Keep the original dark background */
     .stApp {
-        background: #0e1117;
+        background: #f4f6f9;
     }
 
     .block-container {
-        padding-top: 2.5rem;
+        padding-top: 2rem;
         padding-bottom: 3rem;
         max-width: 1400px;
     }
 
-    /* Hero */
     .hero {
-        background: linear-gradient(
-            135deg,
-            #151a24 0%,
-            #111827 55%,
-            #17142a 100%
-        );
-
-        border-radius: 28px;
-        padding: 45px 50px 40px 50px;
-        margin-bottom: 30px;
-
-        border: 1px solid rgba(255, 255, 255, 0.08);
-
-        box-shadow:
-            0 20px 60px rgba(0, 0, 0, 0.35);
-
-        position: relative;
-        overflow: hidden;
+        background: #10253f;
+        border-radius: 10px;
+        padding: 40px 48px 36px 48px;
+        margin-bottom: 28px;
+        border: 1px solid #0c1c30;
+        border-top: 4px solid #b08d3f;
+        box-shadow: 0 4px 18px rgba(16, 37, 63, 0.15);
     }
 
-    /* Blue-purple glow */
-    .hero::before {
-        content: "";
-        position: absolute;
-
-        width: 420px;
-        height: 420px;
-
-        border-radius: 50%;
-
-        background: radial-gradient(
-            circle,
-            rgba(59, 130, 246, 0.18),
-            transparent 70%
-        );
-
-        top: -220px;
-        right: -80px;
-    }
-
-    .hero::after {
-        content: "";
-
-        position: absolute;
-
-        width: 300px;
-        height: 300px;
-
-        border-radius: 50%;
-
-        background: radial-gradient(
-            circle,
-            rgba(124, 58, 237, 0.12),
-            transparent 70%
-        );
-
-        bottom: -180px;
-        left: 35%;
-    }
-
-    /* Main title */
-    .hero-title {
-        font-size: 52px;
-        font-weight: 800;
-
-        letter-spacing: -2px;
-
-        margin: 0;
-
-        line-height: 1.1;
-
-        background: linear-gradient(
-            90deg,
-            #60a5fa,
-            #818cf8,
-            #c084fc
-        );
-
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    /* Subtitle */
-    .hero-subtitle {
-        font-size: 27px;
-        font-weight: 700;
-
-        color: #f8fafc;
-
-        margin-top: 25px;
-        margin-bottom: 12px;
-    }
-
-    /* Description */
-    .hero-description {
-        font-size: 17px;
-
-        line-height: 1.7;
-
-        color: #cbd5e1;
-
-        max-width: 850px;
-
-        margin-bottom: 0;
-    }
-
-    .hero-description strong {
-        color: #f8fafc;
-    }
-
-    /* Feature cards */
-    .feature-grid {
-        display: grid;
-
-        grid-template-columns:
-            repeat(4, 1fr);
-
-        gap: 18px;
-
-        margin-top: 35px;
-    }
-
-    .feature-card {
-        padding: 22px 20px;
-
-        border-radius: 20px;
-
-        background: rgba(
-            255,
-            255,
-            255,
-            0.045
-        );
-
-        border: 1px solid rgba(
-            255,
-            255,
-            255,
-            0.08
-        );
-
-        box-shadow:
-            0 8px 25px rgba(
-                0,
-                0,
-                0,
-                0.20
-            );
-
-        transition:
-            transform 0.2s ease,
-            background 0.2s ease,
-            border 0.2s ease;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-5px);
-
-        background: rgba(
-            255,
-            255,
-            255,
-            0.075
-        );
-
-        border: 1px solid rgba(
-            129,
-            140,
-            248,
-            0.35
-        );
-    }
-
-    .feature-icon {
-        font-size: 30px;
-
+    .hero-eyebrow {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #b08d3f;
         margin-bottom: 10px;
     }
 
-    .feature-title {
-        font-size: 17px;
-
+    .hero-title {
+        font-size: 38px;
         font-weight: 700;
+        letter-spacing: -0.5px;
+        margin: 0;
+        line-height: 1.15;
+        color: #ffffff;
+        font-family: "Georgia", "Times New Roman", serif;
+    }
 
-        color: #f8fafc;
+    .hero-subtitle {
+        font-size: 16px;
+        font-weight: 400;
+        color: #cbd5e1;
+        margin-top: 12px;
+        margin-bottom: 0;
+        max-width: 780px;
+        line-height: 1.6;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 30px;
+    }
+
+    .feature-card {
+        padding: 18px 18px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-left: 3px solid #b08d3f;
+    }
+
+    .feature-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: 0.2px;
     }
 
     .feature-text {
-        font-size: 13px;
-
-        color: #94a3b8;
-
-        margin-top: 5px;
-
+        font-size: 12.5px;
+        color: #a9b7c6;
+        margin-top: 4px;
         line-height: 1.5;
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
-
         .feature-grid {
-            grid-template-columns:
-                repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
-
         .hero-title {
-            font-size: 40px;
-        }
-
-        .hero-subtitle {
-            font-size: 22px;
+            font-size: 30px;
         }
     }
 
     @media (max-width: 600px) {
-
         .feature-grid {
             grid-template-columns: 1fr;
         }
-
         .hero {
-            padding: 30px 25px;
+            padding: 28px 24px;
         }
-
         .hero-title {
-            font-size: 34px;
+            font-size: 26px;
         }
     }
 
     </style>
+
+    <div class="hero">
+
+        <div class="hero-eyebrow">Resume Intelligence Platform</div>
+
+        <div class="hero-title">AI Resume Analyzer</div>
+
+        <div class="hero-subtitle">
+            A structured evaluation of resume fit against a target job
+            description — covering skill coverage, ATS keyword alignment,
+            semantic relevance, and overall document quality.
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-title">Resume Parsing</div>
+                <div class="feature-text">Extracts candidate details, education, experience, and projects.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Job-Fit Matching</div>
+                <div class="feature-text">Scores semantic alignment between resume and job description.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">ATS Keyword Audit</div>
+                <div class="feature-text">Flags matching and missing keywords used by applicant tracking systems.</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">Improvement Guidance</div>
+                <div class="feature-text">Provides specific recommendations to strengthen the resume.</div>
+            </div>
+
+        </div>
+
+    </div>
     """,
     unsafe_allow_html=True
 )
-
-# =============================
-# Input Section
 # =============================
 
 col1, col2 = st.columns(2)
@@ -474,54 +366,55 @@ if analyze_button:
         # Overview Tab
         # =============================
 
+
         with tab1:
-        
+
             st.subheader("📋 Analysis Summary")
-        
+
             st.info(
                 "This analysis compares your resume with the provided job "
                 "description using skills, semantic similarity, ATS keywords, "
                 "and resume quality checks."
             )
-        
+
             st.divider()
-        
+
             # Resume Analysis Score
             st.subheader("📊 Resume Analysis Score")
-        
+
             col1, col2, col3, col4 = st.columns(4)
-        
+
             with col1:
                 st.metric(
                     "🎯 Overall Match",
                     f"{overall_match_score:.2f}%"
                 )
-        
+
             with col2:
                 st.metric(
                     "🤖 AI Semantic Match",
                     f"{match_score:.2f}%"
                 )
-        
+
             with col3:
                 st.metric(
                     "🛠️ Skill Match",
                     f"{skill_match_score:.2f}%"
                 )
-        
+
             with col4:
                 st.metric(
                     "📚 Skills Detected",
                     len(skills)
                 )
-        
+
             # Skill Match
             st.subheader("🛠️ Skill Match")
-        
+
             st.progress(
                 min(skill_match_score / 100, 1.0)
             )
-        
+
             if skill_match_score >= 75:
                 st.success(
                     "Strong skill alignment with the job description."
@@ -535,14 +428,14 @@ if analyze_button:
                 st.warning(
                     "Several job-relevant skills are missing from the resume."
                 )
-        
+
             # AI Semantic Match
             st.subheader("🤖 AI Semantic Match")
-        
+
             st.progress(
                 min(match_score / 100, 1.0)
             )
-        
+
             if match_score >= 75:
                 st.success(
                     "Your resume has strong semantic similarity with the job description."
@@ -555,14 +448,14 @@ if analyze_button:
                 st.warning(
                     "Your resume has relatively low semantic similarity with the job description."
                 )
-        
+
             # Overall Match
             st.subheader("🎯 Overall Match")
-        
+
             st.progress(
                 min(overall_match_score / 100, 1.0)
             )
-        
+
             if overall_match_score >= 75:
                 st.success(
                     "🎯 Strong overall match with the job description."
@@ -577,25 +470,25 @@ if analyze_button:
                     "⚠️ Several areas could be improved to better align your "
                     "resume with this job."
                 )
-        
+
             # Resume Quality
             st.divider()
-        
+
             st.subheader("📄 Resume Quality")
-        
+
             quality_col1, quality_col2 = st.columns([1, 2])
-        
+
             with quality_col1:
-        
+
                 st.metric(
                     "📊 Quality Score",
                     f"{quality_score:.2f}%"
                 )
-        
+
             with quality_col2:
-        
+
                 for check, passed in quality_checks.items():
-        
+
                     if passed:
                         st.success(
                             f"✅ {check}"
@@ -604,14 +497,14 @@ if analyze_button:
                         st.warning(
                             f"⚠️ {check}"
                         )
-        
+
             # Recommendations
             st.divider()
-        
+
             st.subheader("💡 Recommendations")
-        
+
             for recommendation in recommendations:
-        
+
                 st.info(
                     f"💡 {recommendation}"
                 )
