@@ -19,15 +19,33 @@ st.set_page_config(
 )
 
 
-st.title("📄 AI Resume Analyzer")
+st.title("🤖 AI Resume Analyzer")
 
 st.markdown(
     """
-    ### Analyze your resume against a job description
-    Get insights into your skills, job match, experience, projects,
-    certifications, and areas for improvement.
+    ### AI-Powered Resume Screening & Job Matching
+
+    Analyze your resume against a job description and get insights into
+    **skills, ATS keywords, semantic similarity, resume quality,
+    and missing requirements.**
     """
 )
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    st.markdown("📄 **Resume Analysis**")
+
+with col2:
+    st.markdown("🤖 **AI Matching**")
+
+with col3:
+    st.markdown("🔑 **ATS Keywords**")
+
+with col4:
+    st.markdown("💡 **Recommendations**")
+
+st.divider()
 
 st.divider()
 
