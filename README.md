@@ -4,7 +4,7 @@ An AI-powered web application that analyzes resumes against a given job descript
 
 ## 🚀 Live Demo
 
-**Streamlit App:** Add your deployed Streamlit URL here.
+**Streamlit App:**  https://ai-resume-analyzer-yni96hsrkjzngtxoyifhvn.streamlit.app/#ai-resume-analyzer
 
 ## 📌 Project Overview
 
