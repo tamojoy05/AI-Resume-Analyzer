@@ -27,130 +27,222 @@ st.markdown(
     """
     <style>
 
-    /* Main application background */
+    /* Keep the original dark background */
     .stApp {
-        background: linear-gradient(
-            135deg,
-            #f8fbff 0%,
-            #eef5ff 50%,
-            #f8f4ff 100%
-        );
+        background: #0e1117;
     }
 
-    /* Main content width */
     .block-container {
         padding-top: 2.5rem;
         padding-bottom: 3rem;
         max-width: 1400px;
     }
 
-    /* Hero container */
+    /* Hero */
     .hero {
-        background: rgba(255, 255, 255, 0.88);
+        background: linear-gradient(
+            135deg,
+            #151a24 0%,
+            #111827 55%,
+            #17142a 100%
+        );
+
         border-radius: 28px;
         padding: 45px 50px 40px 50px;
         margin-bottom: 30px;
-        border: 1px solid rgba(120, 150, 200, 0.18);
-        box-shadow: 0 15px 45px rgba(50, 80, 120, 0.10);
+
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.35);
+
         position: relative;
         overflow: hidden;
     }
 
-    /* Decorative glow */
+    /* Blue-purple glow */
     .hero::before {
         content: "";
         position: absolute;
-        width: 350px;
-        height: 350px;
+
+        width: 420px;
+        height: 420px;
+
         border-radius: 50%;
+
         background: radial-gradient(
             circle,
-            rgba(80, 140, 255, 0.15),
+            rgba(59, 130, 246, 0.18),
             transparent 70%
         );
-        top: -180px;
+
+        top: -220px;
         right: -80px;
     }
 
+    .hero::after {
+        content: "";
+
+        position: absolute;
+
+        width: 300px;
+        height: 300px;
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+            circle,
+            rgba(124, 58, 237, 0.12),
+            transparent 70%
+        );
+
+        bottom: -180px;
+        left: 35%;
+    }
+
+    /* Main title */
     .hero-title {
         font-size: 52px;
         font-weight: 800;
+
         letter-spacing: -2px;
+
         margin: 0;
+
         line-height: 1.1;
+
         background: linear-gradient(
             90deg,
-            #1677ff,
-            #5b4cff,
-            #7c3aed
+            #60a5fa,
+            #818cf8,
+            #c084fc
         );
+
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
+    /* Subtitle */
     .hero-subtitle {
         font-size: 27px;
         font-weight: 700;
-        color: #172554;
+
+        color: #f8fafc;
+
         margin-top: 25px;
         margin-bottom: 12px;
     }
 
+    /* Description */
     .hero-description {
         font-size: 17px;
+
         line-height: 1.7;
-        color: #475569;
+
+        color: #cbd5e1;
+
         max-width: 850px;
+
         margin-bottom: 0;
     }
 
     .hero-description strong {
-        color: #172554;
+        color: #f8fafc;
     }
 
     /* Feature cards */
     .feature-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
         gap: 18px;
+
         margin-top: 35px;
     }
 
     .feature-card {
         padding: 22px 20px;
+
         border-radius: 20px;
-        background: white;
-        border: 1px solid rgba(120, 150, 200, 0.16);
-        box-shadow: 0 8px 25px rgba(50, 80, 120, 0.07);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        background: rgba(
+            255,
+            255,
+            255,
+            0.045
+        );
+
+        border: 1px solid rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+        box-shadow:
+            0 8px 25px rgba(
+                0,
+                0,
+                0,
+                0.20
+            );
+
+        transition:
+            transform 0.2s ease,
+            background 0.2s ease,
+            border 0.2s ease;
     }
 
     .feature-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 14px 30px rgba(50, 80, 120, 0.12);
+        transform: translateY(-5px);
+
+        background: rgba(
+            255,
+            255,
+            255,
+            0.075
+        );
+
+        border: 1px solid rgba(
+            129,
+            140,
+            248,
+            0.35
+        );
     }
 
     .feature-icon {
         font-size: 30px;
+
         margin-bottom: 10px;
     }
 
     .feature-title {
         font-size: 17px;
+
         font-weight: 700;
-        color: #172554;
+
+        color: #f8fafc;
     }
 
     .feature-text {
         font-size: 13px;
-        color: #64748b;
+
+        color: #94a3b8;
+
         margin-top: 5px;
+
+        line-height: 1.5;
     }
 
-    /* Responsive layout */
+    /* Responsive */
     @media (max-width: 900px) {
+
         .feature-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns:
+                repeat(2, 1fr);
         }
 
         .hero-title {
@@ -163,6 +255,7 @@ st.markdown(
     }
 
     @media (max-width: 600px) {
+
         .feature-grid {
             grid-template-columns: 1fr;
         }
@@ -177,77 +270,9 @@ st.markdown(
     }
 
     </style>
-
-    <div class="hero">
-
-        <div class="hero-title">
-            🤖 AI Resume Analyzer
-        </div>
-
-        <div class="hero-subtitle">
-            AI-Powered Resume Screening & Job Matching
-        </div>
-
-        <div class="hero-description">
-            Analyze your resume against a job description and get
-            intelligent insights into
-            <strong>skills</strong>,
-            <strong>ATS keywords</strong>,
-            <strong>semantic similarity</strong>,
-            <strong>resume quality</strong>,
-            and
-            <strong>missing requirements</strong>.
-        </div>
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-                <div class="feature-icon">📄</div>
-                <div class="feature-title">
-                    Resume Analysis
-                </div>
-                <div class="feature-text">
-                    Extract and analyze important resume information.
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🤖</div>
-                <div class="feature-title">
-                    AI Matching
-                </div>
-                <div class="feature-text">
-                    Compare your resume with the job description.
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🔑</div>
-                <div class="feature-title">
-                    ATS Keywords
-                </div>
-                <div class="feature-text">
-                    Identify matching and missing job keywords.
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">💡</div>
-                <div class="feature-title">
-                    Recommendations
-                </div>
-                <div class="feature-text">
-                    Get actionable suggestions to improve your resume.
-                </div>
-            </div>
-
-        </div>
-
-    </div>
     """,
     unsafe_allow_html=True
 )
-
 
 # =============================
 # Input Section
