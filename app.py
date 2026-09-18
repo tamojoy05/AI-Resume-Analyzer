@@ -19,35 +19,234 @@ st.set_page_config(
 )
 
 
-st.title("🤖 AI Resume Analyzer")
+# ==============================
+# CUSTOM HEADER / HERO SECTION
+# ==============================
 
 st.markdown(
     """
-    ### AI-Powered Resume Screening & Job Matching
+    <style>
 
-    Analyze your resume against a job description and get insights into
-    **skills, ATS keywords, semantic similarity, resume quality,
-    and missing requirements.**
-    """
+    /* Main application background */
+    .stApp {
+        background: linear-gradient(
+            135deg,
+            #f8fbff 0%,
+            #eef5ff 50%,
+            #f8f4ff 100%
+        );
+    }
+
+    /* Main content width */
+    .block-container {
+        padding-top: 2.5rem;
+        padding-bottom: 3rem;
+        max-width: 1400px;
+    }
+
+    /* Hero container */
+    .hero {
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: 28px;
+        padding: 45px 50px 40px 50px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(120, 150, 200, 0.18);
+        box-shadow: 0 15px 45px rgba(50, 80, 120, 0.10);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Decorative glow */
+    .hero::before {
+        content: "";
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle,
+            rgba(80, 140, 255, 0.15),
+            transparent 70%
+        );
+        top: -180px;
+        right: -80px;
+    }
+
+    .hero-title {
+        font-size: 52px;
+        font-weight: 800;
+        letter-spacing: -2px;
+        margin: 0;
+        line-height: 1.1;
+        background: linear-gradient(
+            90deg,
+            #1677ff,
+            #5b4cff,
+            #7c3aed
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+        font-size: 27px;
+        font-weight: 700;
+        color: #172554;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    .hero-description {
+        font-size: 17px;
+        line-height: 1.7;
+        color: #475569;
+        max-width: 850px;
+        margin-bottom: 0;
+    }
+
+    .hero-description strong {
+        color: #172554;
+    }
+
+    /* Feature cards */
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 35px;
+    }
+
+    .feature-card {
+        padding: 22px 20px;
+        border-radius: 20px;
+        background: white;
+        border: 1px solid rgba(120, 150, 200, 0.16);
+        box-shadow: 0 8px 25px rgba(50, 80, 120, 0.07);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 30px rgba(50, 80, 120, 0.12);
+    }
+
+    .feature-icon {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .feature-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #172554;
+    }
+
+    .feature-text {
+        font-size: 13px;
+        color: #64748b;
+        margin-top: 5px;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 900px) {
+        .feature-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero-title {
+            font-size: 40px;
+        }
+
+        .hero-subtitle {
+            font-size: 22px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .feature-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero {
+            padding: 30px 25px;
+        }
+
+        .hero-title {
+            font-size: 34px;
+        }
+    }
+
+    </style>
+
+    <div class="hero">
+
+        <div class="hero-title">
+            🤖 AI Resume Analyzer
+        </div>
+
+        <div class="hero-subtitle">
+            AI-Powered Resume Screening & Job Matching
+        </div>
+
+        <div class="hero-description">
+            Analyze your resume against a job description and get
+            intelligent insights into
+            <strong>skills</strong>,
+            <strong>ATS keywords</strong>,
+            <strong>semantic similarity</strong>,
+            <strong>resume quality</strong>,
+            and
+            <strong>missing requirements</strong>.
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <div class="feature-title">
+                    Resume Analysis
+                </div>
+                <div class="feature-text">
+                    Extract and analyze important resume information.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <div class="feature-title">
+                    AI Matching
+                </div>
+                <div class="feature-text">
+                    Compare your resume with the job description.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔑</div>
+                <div class="feature-title">
+                    ATS Keywords
+                </div>
+                <div class="feature-text">
+                    Identify matching and missing job keywords.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <div class="feature-title">
+                    Recommendations
+                </div>
+                <div class="feature-text">
+                    Get actionable suggestions to improve your resume.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    """,
+    unsafe_allow_html=True
 )
-
-col1, col2, col3, col4 = st.columns(4)
-
-with col1:
-    st.markdown("📄 **Resume Analysis**")
-
-with col2:
-    st.markdown("🤖 **AI Matching**")
-
-with col3:
-    st.markdown("🔑 **ATS Keywords**")
-
-with col4:
-    st.markdown("💡 **Recommendations**")
-
-st.divider()
-
-st.divider()
 
 
 # =============================
